@@ -23,6 +23,18 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "11775bc8-8a02-4e84-9ae4-8e1087c616b4"
+      }
+    },
+    "owner": "anubhavpareva",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/11775bc8-8a02-4e84-9ae4-8e1087c616b4"
     }
   }
 }
