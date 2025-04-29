@@ -1,0 +1,78 @@
+import { Image, StyleSheet, Text, View } from "react-native"
+import { Button, Icon, Input, InputRightAddon, Pressable } from "native-base";
+import PhoneNumberInput from "../components/signup-module/phoneNumberInput";
+import OtpVerificationInput from "../components/signup-module/otpVerificationInput";
+import { MaterialIcons } from "@expo/vector-icons";
+import CreatePasswordInput from "../components/signup-module/createPasswordInput";
+
+export default function Signup(){
+  
+    return(
+        <View style={styles.container}>
+            <View style={styles.imageWrapper}>
+            <Image style={styles.imageStyle} source={require("../assets/tagphoto.png")}/>
+            </View>
+            {/* <PhoneNumberInput/> */}
+            {/* <OtpVerificationInput />  */}
+             <CreatePasswordInput />
+        </View>
+    )
+}
+const styles = StyleSheet.create({
+    container:{
+        width:"100%",
+        alignItems:"center",
+        padding:8
+    },
+    subTitle:{
+        fontSize:16,
+        fontWeight:500,
+        color:"#6B6D7B",
+        width:"70%",
+        textAlign:"center",
+        alignSelf:"center"
+    },
+    inputWrapper:{
+        gap:16
+    },
+    inputLabel:{
+        color:"#6AC949",
+        fontSize:12,
+        fontWeight:500,
+        paddingHorizontal:12
+    },
+    title:{
+        fontSize:20,
+        fontWeight:700,
+        color:"#1A1A1A",
+        textAlign:"center"
+    },
+    infoText:{
+        color:"#8F8F8F",
+        fontSize:12,
+        fontWeight:500,
+        padding:8
+    },
+    buttonWrapper:{
+        color:"#ffffff",
+        borderRadius:16,
+        fontSize:16,
+        fontWeight:700
+    },
+    imageWrapper:{
+        marginBottom:64
+    },
+    imageStyle:{
+    },
+    contentWrapper:{
+        width:"100%",
+        gap:16,
+        justifyContent:"space-between"
+    },
+    inputStyle:{
+        borderRadius:128
+    },
+    buttonPressed:{
+        bg:"#8FD776"
+    }
+});
