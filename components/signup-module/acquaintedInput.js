@@ -1,38 +1,57 @@
-import { StyleSheet, Text, View } from "react-native";
-
-import { useState } from "react";
+import { StyleSheet, View, Text, Platform } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { Colors } from "../../assets/constant";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import { useState } from "react";
 
-export default function CreatePasswordInput({setActiveComp}) {
-  const [showPassword, setShowPassword] = useState(true);
-  const [showConfirmPass, setConfirmPass] = useState(true);
-  function handleButtonClick(){
-    setActiveComp(4)
-}
+export default function AcquaintedInput({setActiveComp}) {
+    const [date, setDate] = useState(new Date());
+    const [showPicker, setShowPicker] = useState(false);
+    const formattedDate = date.toLocaleDateString();
+    function handleButtonClick(){
+      setActiveComp(3)
+  }
   return (
     <View style={styles.contentWrapper}>
-      <Text style={styles.title}>Create a password</Text>
+      <Text style={styles.title}>Let's get acquainted!</Text>
       <View style={styles.inputWrapper}>
         <TextInput
           mode="outlined"
-          secureTextEntry={showPassword}
-          label="Create a password"
+          label="Your name"
           activeOutlineColor={Colors["my-green-60"]}
           outlineColor={Colors["my-green-60"]}
           style={styles.inputStyle}
-          right={<TextInput.Icon onPress={()=>setShowPassword(!showPassword)} icon={showPassword ? "eye" : "eye-off"} />}
         />
+        <View>
         <TextInput
           mode="outlined"
-          label="Repeat password"
-          secureTextEntry={setConfirmPass}
+          label="Date of Birth"
+          value={formattedDate}
+          //reditable={false}
+          onPress={() => setShowPicker(true)}
           activeOutlineColor={Colors["my-green-60"]}
           outlineColor={Colors["my-green-60"]}
           style={styles.inputStyle}
-          right={<TextInput.Icon onPress={()=>setConfirmPass(!showConfirmPass)} icon={showConfirmPass ? "eye" : "eye-off"} />}
+          right={<TextInput.Icon icon="calendar" onPressIn={() => setShowPicker(true)}/>}
         />
-
+        { showPicker && (<DateTimePicker
+          value={date}
+          mode="date"
+          display={Platform.OS === "ios" ? "spinner" : "default"}
+          onChange={(event, selectedDate) => {
+            setShowPicker(Platform.OS === "ios");
+            if (selectedDate) setDate(selectedDate);
+          }}
+        />)}
+        </View>
+        <TextInput
+          mode="outlined"
+          label="Referral code"
+          placeholder="_ _ _-_ _ _"
+          activeOutlineColor={Colors["my-green-60"]}
+          outlineColor={Colors["my-green-60"]}
+          style={styles.inputStyle}
+        />
         <Button
           mode="contained"
           onPress={handleButtonClick}

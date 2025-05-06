@@ -1,21 +1,24 @@
-import { Image, StyleSheet, Text, View } from "react-native"
-import { Button, Icon, Input, InputRightAddon, Pressable } from "native-base";
+import { Image, KeyboardAvoidingView, ScrollView, StyleSheet, View } from "react-native"
 import PhoneNumberInput from "../components/signup-module/phoneNumberInput";
 import OtpVerificationInput from "../components/signup-module/otpVerificationInput";
-import { MaterialIcons } from "@expo/vector-icons";
 import CreatePasswordInput from "../components/signup-module/createPasswordInput";
+import AcquaintedInput from "../components/signup-module/acquaintedInput";
+import { useState } from "react";
 
 export default function Signup(){
-  
+    const [activeComp, setActiveComp] = useState(1);
     return(
-        <View style={styles.container}>
+        <KeyboardAvoidingView behavior="padding" style={styles.container}>
+            <ScrollView style={{width:"100%"}} contentContainerStyle={{width:"100%", alignItems:"center"}}>
             <View style={styles.imageWrapper}>
             <Image style={styles.imageStyle} source={require("../assets/tagphoto.png")}/>
             </View>
-            {/* <PhoneNumberInput/> */}
-            {/* <OtpVerificationInput />  */}
-             <CreatePasswordInput />
-        </View>
+           { activeComp === 1 && <PhoneNumberInput setActiveComp={setActiveComp}/>}
+            {activeComp === 2 && <OtpVerificationInput setActiveComp={setActiveComp}/>}
+            { activeComp === 3 && <CreatePasswordInput setActiveComp={setActiveComp}/>}
+            {activeComp === 4 && <AcquaintedInput setActiveComp={setActiveComp}/>}
+             </ScrollView>
+        </KeyboardAvoidingView>
     )
 }
 const styles = StyleSheet.create({

@@ -1,15 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 import Signup from './screens/SignupScreen';
-import { NativeBaseProvider } from 'native-base';
+import RegistrationComplete from './components/signup-module/registrationComplete';
+
 
 export default function App() {
   return (
-    <NativeBaseProvider>
-    <View style={styles.container}>
+
+    <SafeAreaView style={styles.container}>
       <Signup/>
-    </View>
-    </NativeBaseProvider>
+      {/* <RegistrationComplete/> */}
+    </SafeAreaView>
+ 
   );
 }
 
@@ -19,6 +21,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    padding:8
   },
 });
