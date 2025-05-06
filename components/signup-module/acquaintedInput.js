@@ -4,12 +4,12 @@ import { Colors } from "../../assets/constant";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useState } from "react";
 
-export default function AcquaintedInput({setActiveComp}) {
-    const [date, setDate] = useState(new Date());
-    const [showPicker, setShowPicker] = useState(false);
-    const formattedDate = date.toLocaleDateString();
-    function handleButtonClick(){
-      setActiveComp(3)
+export default function AcquaintedInput({ setActiveComp }) {
+  const [date, setDate] = useState(new Date());
+  const [showPicker, setShowPicker] = useState(false);
+  const formattedDate = date.toLocaleDateString();
+  function handleButtonClick() {
+    alert("pressed");
   }
   return (
     <View style={styles.contentWrapper}>
@@ -23,26 +23,33 @@ export default function AcquaintedInput({setActiveComp}) {
           style={styles.inputStyle}
         />
         <View>
-        <TextInput
-          mode="outlined"
-          label="Date of Birth"
-          value={formattedDate}
-          //reditable={false}
-          onPress={() => setShowPicker(true)}
-          activeOutlineColor={Colors["my-green-60"]}
-          outlineColor={Colors["my-green-60"]}
-          style={styles.inputStyle}
-          right={<TextInput.Icon icon="calendar" onPressIn={() => setShowPicker(true)}/>}
-        />
-        { showPicker && (<DateTimePicker
-          value={date}
-          mode="date"
-          display={Platform.OS === "ios" ? "spinner" : "default"}
-          onChange={(event, selectedDate) => {
-            setShowPicker(Platform.OS === "ios");
-            if (selectedDate) setDate(selectedDate);
-          }}
-        />)}
+          <TextInput
+            mode="outlined"
+            label="Date of Birth"
+            value={formattedDate}
+            //reditable={false}
+            onPress={() => setShowPicker(true)}
+            activeOutlineColor={Colors["my-green-60"]}
+            outlineColor={Colors["my-green-60"]}
+            style={styles.inputStyle}
+            right={
+              <TextInput.Icon
+                icon="calendar"
+                onPressIn={() => setShowPicker(true)}
+              />
+            }
+          />
+          {showPicker && (
+            <DateTimePicker
+              value={date}
+              mode="date"
+              display={Platform.OS === "ios" ? "spinner" : "default"}
+              onChange={(event, selectedDate) => {
+                setShowPicker(Platform.OS === "ios");
+                if (selectedDate) setDate(selectedDate);
+              }}
+            />
+          )}
         </View>
         <TextInput
           mode="outlined"

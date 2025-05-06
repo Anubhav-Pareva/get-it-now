@@ -4,12 +4,12 @@ import { useState } from "react";
 import { Button, TextInput } from "react-native-paper";
 import { Colors } from "../../assets/constant";
 
-export default function CreatePasswordInput({setActiveComp}) {
+export default function CreatePasswordInput({ setActiveComp }) {
   const [showPassword, setShowPassword] = useState(true);
   const [showConfirmPass, setConfirmPass] = useState(true);
-  function handleButtonClick(){
-    setActiveComp(4)
-}
+  function handleButtonClick() {
+    setActiveComp(4);
+  }
   return (
     <View style={styles.contentWrapper}>
       <Text style={styles.title}>Create a password</Text>
@@ -21,7 +21,12 @@ export default function CreatePasswordInput({setActiveComp}) {
           activeOutlineColor={Colors["my-green-60"]}
           outlineColor={Colors["my-green-60"]}
           style={styles.inputStyle}
-          right={<TextInput.Icon onPress={()=>setShowPassword(!showPassword)} icon={showPassword ? "eye" : "eye-off"} />}
+          right={
+            <TextInput.Icon
+              onPress={() => setShowPassword(!showPassword)}
+              icon={showPassword ? "eye" : "eye-off"}
+            />
+          }
         />
         <TextInput
           mode="outlined"
@@ -30,7 +35,12 @@ export default function CreatePasswordInput({setActiveComp}) {
           activeOutlineColor={Colors["my-green-60"]}
           outlineColor={Colors["my-green-60"]}
           style={styles.inputStyle}
-          right={<TextInput.Icon onPress={()=>setConfirmPass(!showConfirmPass)} icon={showConfirmPass ? "eye" : "eye-off"} />}
+          right={
+            <TextInput.Icon
+              onPress={() => setConfirmPass(!showConfirmPass)}
+              icon={showConfirmPass ? "eye" : "eye-off"}
+            />
+          }
         />
 
         <Button
