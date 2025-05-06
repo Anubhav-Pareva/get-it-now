@@ -21,17 +21,23 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Anubhav-Pareva/get-it-now/issues"
   },
   "homepage": "https://github.com/Anubhav-Pareva/get-it-now#readme",
   "dependencies": {
-    "@react-native-vector-icons/common": "^11.0.0",
-    "@react-native-vector-icons/material-design-icons": "^7.4.47",
-    "expo": "~53.0.7",
+    "expo": "^53.0.6",
+    "expo-status-bar": "~2.2.3",
+    "hoist-non-react-statics": "^3.3.2",
     "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-native": "^0.79.2",
     "react-native-paper": "^5.14.0",
-    "react-native-safe-area-context": "^5.4.0"
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-screens": "~4.10.0",
+    "react-native-vector-icons": "^10.2.0",
+    "react-navigation": "^5.0.0",
+    "@react-native-community/datetimepicker": "8.3.0"
   }
 }
