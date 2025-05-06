@@ -1,16 +1,17 @@
 
-import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 import Signup from './screens/SignupScreen';
-import { PaperProvider } from 'react-native-paper';
+import RegistrationComplete from './components/signup-module/registrationComplete';
 
 
 export default function App() {
   return (
-    <PaperProvider>
-    <View style={styles.container}>
+
+    <SafeAreaView style={styles.container}>
       <Signup/>
-    </View>
-    </PaperProvider>
+      {/* <RegistrationComplete/> */}
+    </SafeAreaView>
+ 
   );
 }
 
@@ -20,6 +21,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    padding:8
   },
 });
