@@ -1,13 +1,16 @@
-import { SafeAreaView, StyleSheet, View } from "react-native";
-import Signup from "./screens/SignupScreen";
-import RegistrationComplete from "./components/signup-module/registrationComplete";
+
+import { StyleSheet, View } from 'react-native';
+import Signup from './screens/SignupScreen';
+import { PaperProvider } from 'react-native-paper';
+
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Signup />
-      {/* <RegistrationComplete/> */}
-    </SafeAreaView>
+    <PaperProvider>
+    <View style={styles.container}>
+      <Signup/>
+    </View>
+    </PaperProvider>
   );
 }
 
