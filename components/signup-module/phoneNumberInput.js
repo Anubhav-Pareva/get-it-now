@@ -21,7 +21,8 @@ export default function PhoneNumberInput({setActiveComp}) {
           mode="contained"
           onPress={handleButtonClick}
           buttonColor={Colors["my-green-60"]}
-          style={{borderRadius:10}}
+          contentStyle={styles.buttonContent}
+          style={styles.buttonWrapper}
         >
            Confirm Login
         </Button>
@@ -34,6 +35,12 @@ export default function PhoneNumberInput({setActiveComp}) {
   );
 }
 const styles = StyleSheet.create({
+  buttonWrapper: {
+    borderRadius: 16
+  },
+  buttonContent: {
+    height: 48
+  },
   inputWrapper: {
     gap: 16,
   },

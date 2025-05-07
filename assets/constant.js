@@ -7,6 +7,7 @@ export const Colors = {
   "my-green-50": "#8FD776",
   "my-green-60": "#6AC949",
   "my-green-70": "#45BC1B",
+  "my-green-dark": "#002100",
   // Gray colors
   "my-gray-10": "#EEEFF0",
   "my-gray-20": "#F6F9F7",

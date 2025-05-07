@@ -1,6 +1,7 @@
 import {
   Image,
   KeyboardAvoidingView,
+  SafeAreaView,
   ScrollView,
   StyleSheet,
   View,
@@ -10,34 +11,57 @@ import OtpVerificationInput from "../components/signup-module/otpVerificationInp
 import CreatePasswordInput from "../components/signup-module/createPasswordInput";
 import AcquaintedInput from "../components/signup-module/acquaintedInput";
 import { useState } from "react";
+import { IconButton } from "react-native-paper";
+import { Colors } from "../assets/constant";
+import BackButton from "../components/BackButton";
 
 export default function Signup() {
   const [activeComp, setActiveComp] = useState(1);
+  const handleBackbutton = () =>{
+    if (activeComp > 1) setActiveComp(activeComp - 1);
+  }
   return (
-    <KeyboardAvoidingView behavior="padding" style={styles.container}>
-      <ScrollView
-        style={{ width: "100%" }}
-        contentContainerStyle={{ width: "100%", alignItems: "center" }}
-      >
-        <View style={styles.imageWrapper}>
-          <Image
-            style={styles.imageStyle}
-            source={require("../assets/tagphoto.png")}
-          />
-        </View>
-        {activeComp === 1 && <PhoneNumberInput setActiveComp={setActiveComp} />}
-        {activeComp === 2 && (
-          <OtpVerificationInput setActiveComp={setActiveComp} />
-        )}
-        {activeComp === 3 && (
-          <CreatePasswordInput setActiveComp={setActiveComp} />
-        )}
-        {activeComp === 4 && <AcquaintedInput setActiveComp={setActiveComp} />}
-      </ScrollView>
-    </KeyboardAvoidingView>
+    <SafeAreaView style={styles.uContainer}>
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <ScrollView
+          style={{ width: "100%" }}
+          contentContainerStyle={{ width: "100%", alignItems: "center" }}
+        >
+          {activeComp === 2 && (
+            <View style={styles.backIconWrapper}>
+              <BackButton handleBackbutton={handleBackbutton}/>
+            </View>
+          )}
+          <View style={styles.imageWrapper}>
+            <Image
+              style={styles.imageStyle}
+              source={require("../assets/tagphoto.png")}
+            />
+          </View>
+          {activeComp === 1 && (
+            <PhoneNumberInput setActiveComp={setActiveComp} />
+          )}
+          {activeComp === 2 && (
+            <OtpVerificationInput setActiveComp={setActiveComp} />
+          )}
+          {activeComp === 3 && (
+            <CreatePasswordInput setActiveComp={setActiveComp} />
+          )}
+          {activeComp === 4 && (
+            <AcquaintedInput setActiveComp={setActiveComp} />
+          )}
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
+  uContainer: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   container: {
     width: "100%",
     alignItems: "center",
@@ -92,5 +116,13 @@ const styles = StyleSheet.create({
   },
   buttonPressed: {
     bg: "#8FD776",
+  },
+  backIconWrapper: {
+    height: "auto",
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    marginBottom: 16,
   },
 });

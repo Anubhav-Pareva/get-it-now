@@ -3,13 +3,15 @@ import { Button, TextInput } from "react-native-paper";
 import { Colors } from "../../assets/constant";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 export default function AcquaintedInput({ setActiveComp }) {
+  const Navigation = useNavigation();
   const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);
   const formattedDate = date.toLocaleDateString();
   function handleButtonClick() {
-    alert("pressed");
+    Navigation.navigate("RegistrationComplete");
   }
   return (
     <View style={styles.contentWrapper}>
@@ -63,7 +65,8 @@ export default function AcquaintedInput({ setActiveComp }) {
           mode="contained"
           onPress={handleButtonClick}
           buttonColor={Colors["my-green-60"]}
-          style={{ borderRadius: 10 }}
+          contentStyle={styles.buttonContent}
+          style={styles.buttonWrapper}
         >
           Continue
         </Button>
@@ -76,6 +79,12 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     padding: 8,
+  },
+  buttonWrapper: {
+    borderRadius: 16,
+  },
+  buttonContent: {
+    height: 48,
   },
   subTitle: {
     fontSize: 16,

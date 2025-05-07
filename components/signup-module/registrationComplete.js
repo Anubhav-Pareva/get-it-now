@@ -3,7 +3,10 @@ import { Image, Text, View } from "react-native";
 import { Colors } from "../../assets/constant";
 import { Button } from "react-native-paper";
 
-export default function RegistrationComplete() {
+export default function RegistrationComplete({ setIsLogin }) {
+  const handleButtonClick = () => {
+    setIsLogin(true);
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Thank you for registering!</Text>
@@ -15,7 +18,7 @@ export default function RegistrationComplete() {
       </View>
       <Button
         mode="contained"
-        onPress={() => alert("Pressed")}
+        onPress={handleButtonClick}
         buttonColor={Colors["my-green-60"]}
         style={{ borderRadius: 10 }}
       >

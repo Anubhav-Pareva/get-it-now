@@ -47,7 +47,8 @@ export default function CreatePasswordInput({ setActiveComp }) {
           mode="contained"
           onPress={handleButtonClick}
           buttonColor={Colors["my-green-60"]}
-          style={{ borderRadius: 10 }}
+          contentStyle={styles.buttonContent}
+          style={styles.buttonWrapper}
         >
           Continue
         </Button>
@@ -91,10 +92,10 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   buttonWrapper: {
-    color: "#ffffff",
-    borderRadius: 16,
-    fontSize: 16,
-    fontWeight: 700,
+    borderRadius: 16
+  },
+  buttonContent: {
+    height: 48
   },
   imageWrapper: {
     marginBottom: 64,
