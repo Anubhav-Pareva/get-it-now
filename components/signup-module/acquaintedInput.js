@@ -40,6 +40,12 @@ export default function AcquaintedInput({ setActiveComp }) {
                 onPressIn={() => setShowPicker(true)}
               />
             }
+            theme={{
+              colors: {
+                primary: Colors["my-green-60"],
+                onSurfaceVariant: Colors["my-green-60"],
+              },
+            }}
           />
           {showPicker && (
             <DateTimePicker

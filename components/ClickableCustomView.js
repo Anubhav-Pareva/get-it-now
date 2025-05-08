@@ -6,7 +6,10 @@ export default function ClickableCustomView({
                                                 title = "Title", 
                                                 subTitle, 
                                                 onPress= ()=>{alert("pressed")},
-                                                isCopied=false,
+                                                isIcon=false,
+                                                icon,
+                                                iconSize=24,
+                                                iconColor=Colors["my-green-70"],
                                                 style
                                             }){
     return (
@@ -20,12 +23,13 @@ export default function ClickableCustomView({
             {subTitle && <Text style={styles.subTitle}>{subTitle}</Text>}
             <Text style={styles.title}>{title}</Text>
           </View>
-          {!isCopied && <IconButton 
+          {!isIcon && <IconButton 
                             icon="arrow-right" 
                             iconColor={Colors["my-green-70"]} />}
-          {isCopied && <IconButton 
-                            icon="content-copy" 
-                            iconColor={Colors["my-green-70"]} />}
+          {isIcon && <IconButton 
+                            icon={icon} 
+                            size={iconSize}
+                            iconColor={iconColor} />}
         </View>
       </TouchableHighlight>
     );

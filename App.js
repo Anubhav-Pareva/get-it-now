@@ -5,27 +5,38 @@ import HomeNavigationScreen from "./screens/HomeNavigationScreen";
 import { NavigationContainer } from '@react-navigation/native';
 import { useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import MyDetails from "./screens/MyDetailScreen";
+import MyDetails from "./screens/profile-screens/MyDetailScreen";
+import { Provider } from "react-native-paper";
+import Subscription from "./screens/profile-screens/SubscriptionScreen";
+import MyAddress from "./screens/profile-screens/MyAddressScreen";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
   const [isLogin, setIsLogin] = useState(true);
   return (
-    <NavigationContainer>
-      {isLogin ? (
-        <HomeNavigationScreen />
-      ) : (
+    <Provider>
+      <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Signup" component={Signup} />
-          <Stack.Screen name="RegistrationComplete" >
-            {(props) => (
-              <RegistrationComplete {...props} setIsLogin={setIsLogin} />
-            )}
-          </Stack.Screen>
-          <Stack.Screen name="MyDetails" component={MyDetails}/>
+          {isLogin ? (
+            <>
+              <Stack.Screen name="HomeTab" component={HomeNavigationScreen} />
+              <Stack.Screen name="MyDetails" component={MyDetails} />
+              <Stack.Screen name="MySubscription" component={Subscription} />
+              <Stack.Screen name="MyAddress" component={MyAddress}/>
+            </>
+          ) : (
+            <>
+              <Stack.Screen name="Signup" component={Signup} />
+              <Stack.Screen name="RegistrationComplete">
+                {(props) => (
+                  <RegistrationComplete {...props} setIsLogin={setIsLogin} />
+                )}
+              </Stack.Screen>
+            </>
+          )}
         </Stack.Navigator>
-      )}
-    </NavigationContainer>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

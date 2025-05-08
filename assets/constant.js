@@ -18,6 +18,11 @@ export const Colors = {
   "my-gray-text": "#8F8F8F",
   //Black color
   "my-black": "#002100",
+  "my-black-2": "#1A1A1A",
   //White color
   "my-white": "#ffffff",
+  //red color
+  "my-red": "#FF6F6F",
+  //yellow color
+  "my-yellow": "#FFDE51",
 };
