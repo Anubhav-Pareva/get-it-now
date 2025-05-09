@@ -4,25 +4,29 @@ import BackButton from "../../components/BackButton";
 import HeaderTitle from "../../components/HeaderTitle";
 import { Colors } from "../../assets/constant";
 import { useNavigation } from "@react-navigation/native";
-import { Button, Icon } from "react-native-paper";
+import { Button } from "react-native-paper";
 import ClickableCustomView from "../../components/ClickableCustomView";
 
 const addressList = [
   {
     addressName: "Noida One",
     addressLine1: "123 Main St",
+    city:"Noida",
   },
   {
     addressName: "Home",
     addressLine1: "456 Main St",
+    city:"Delhi",
   },
   {
     addressName: "Office",
     addressLine1: "789 Main St",
+    city:"Gurgaon",
   },
   {
     addressName: "home 2",
     addressLine1: "0123 Main St",
+    city:"Bangalore",
   },
 ];
 export default function MyAddress(){
@@ -30,6 +34,9 @@ export default function MyAddress(){
       const handleBackButton = () => {
         Navigation.goBack();
       };
+      const goToEditAddress = (index, data, type) => {
+        Navigation.navigate("EditAddress", {index: index, data: data, type: type });
+      }
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.headerContainer}>
@@ -42,13 +49,20 @@ export default function MyAddress(){
             {addressList.map((address, index) => (
                 <ClickableCustomView 
                             key={index} 
+                            onPress={()=>goToEditAddress(index, address, "edit")}
                             title={address.addressName} 
                             subTitle={address.addressLine1}
                             isIcon={true}
                             icon={"cog"}/>
             ))}
           </View>
-          <Button icon={"plus"} textColor={Colors["my-green-70"]} style={{fontSize:16, fontWeight:700, alignItems:"flex-start"}}>
+          <Button 
+              icon={"plus"} 
+              textColor={Colors["my-green-70"]} 
+              style={{fontSize:16, 
+                      fontWeight:700, 
+                      alignItems:"flex-start"}}
+              onPress={()=>goToEditAddress(null, null, 'add')}>
             Add new address
           </Button>
         </ScrollView>

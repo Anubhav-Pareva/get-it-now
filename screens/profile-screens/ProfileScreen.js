@@ -4,7 +4,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import ClickableCustomView from "../../components/ClickableCustomView";
 import { useNavigation } from "@react-navigation/native";
 import HeaderTitle from "../../components/HeaderTitle";
+import * as Clipboard from "expo-clipboard";
+import CommonSnackbar from "../../components/commonSnackbar";
+import { useState } from "react";
 export default function ProfileScreen() {
+  const [visibleSnackbar, setVisibleSnackbar] = useState(false);
+  const [visibleComingSnackbar, setComingSnackbar] = useState(false);
   const navigation = useNavigation();
   const goTOMyDetail = () => {
     navigation.navigate("MyDetails");
@@ -14,6 +19,22 @@ export default function ProfileScreen() {
   };
   const goToMyAddress = () => {
     navigation.navigate("MyAddress");
+  };
+  const goToPointandBonus = () => {
+    navigation.navigate("PointandBonus");
+  }
+  const goToMyOrders = () => {
+    navigation.navigate("MyOrders");
+  };
+  const copyToClipboard = (text) => {
+    Clipboard.setStringAsync(text);
+    setVisibleSnackbar(true);
+  }
+  const dismissSnackbar = () => {
+    setVisibleSnackbar(false);
+  }
+  const dismissComingSnackbar = () => {
+    setComingSnackbar(false);
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -34,22 +55,36 @@ export default function ProfileScreen() {
             <ClickableCustomView
               title="61 points"
               subTitle="Points and bonuses"
+              onPress={goToPointandBonus}
             />
           </View>
           <View style={{ flex: 1 }}>
             <ClickableCustomView
               title="ААА117"
               subTitle="Code for a friend"
+              onPress={() => copyToClipboard("ААА117")}
               isIcon={true}
               icon={"content-copy"}
             />
           </View>
         </View>
-        <ClickableCustomView title="Orders" />
+        <ClickableCustomView title="Orders"  onPress={goToMyOrders}/>
         <ClickableCustomView title="Addresses" onPress={goToMyAddress} />
-        <ClickableCustomView title="Payment Information" />
-        <ClickableCustomView title="Become a partner" />
+        {/* <ClickableCustomView title="Payment Information" /> */}
+        <ClickableCustomView title="Become a partner" onPress={()=>setComingSnackbar(true)}/>
       </ScrollView>
+      <CommonSnackbar
+        visible={visibleSnackbar}
+        message={"Code copy successfully"}
+        duration={1000}
+        onDismissSnackBar={dismissSnackbar}
+      />
+      <CommonSnackbar
+        visible={visibleComingSnackbar}
+        message={"Comming Soon!!"}
+        duration={1000}
+        onDismissSnackBar={dismissComingSnackbar}
+      />
     </SafeAreaView>
   );
 }

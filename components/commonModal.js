@@ -11,7 +11,7 @@ export default function CommonModal({visible, hideModal, containerStyle, content
           onDismiss={hideModal}
           contentContainerStyle={[styles.modalContainer, containerStyle]}
         >
-          <SafeAreaView style={{flex:1, paddingHorizontal:16, width:"100%"}}>
+          <SafeAreaView style={styles.safeContainer}>
             <View style={{ width: "100%", alignItems: "flex-end" }}>
               <IconButton icon={"window-close"} onPress={hideModal} />
             </View>
@@ -22,13 +22,19 @@ export default function CommonModal({visible, hideModal, containerStyle, content
     );
 }
 const styles = StyleSheet.create({
-    modalContainer:{
-        maxHeight:"80%",
-        minHeight:"60%",
-        width:"100%",
-        justifyContent:"center",
-        alignItems:"center",
-        backgroundColor:Colors["my-white"],
-        borderRadius:16
-    }
+  modalContainer: {
+    maxHeight: "80%",
+    minHeight: "60%",
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Colors["my-white"],
+    borderRadius: 16,
+    overflow: "hidden",
+  },
+  safeContainer: {
+    flex: 1,
+    paddingHorizontal: 16,
+    width: "100%",
+  },
 });

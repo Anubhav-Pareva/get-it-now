@@ -9,6 +9,9 @@ import MyDetails from "./screens/profile-screens/MyDetailScreen";
 import { Provider } from "react-native-paper";
 import Subscription from "./screens/profile-screens/SubscriptionScreen";
 import MyAddress from "./screens/profile-screens/MyAddressScreen";
+import EditAddress from "./screens/profile-screens/EditAddressScreen";
+import PointandBonus from "./screens/profile-screens/Point&BonusScreen";
+import MyOrders from "./screens/profile-screens/MyOrdersScreen";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -23,6 +26,9 @@ export default function App() {
               <Stack.Screen name="MyDetails" component={MyDetails} />
               <Stack.Screen name="MySubscription" component={Subscription} />
               <Stack.Screen name="MyAddress" component={MyAddress}/>
+              <Stack.Screen name="EditAddress" component={EditAddress}/>
+              <Stack.Screen name="PointandBonus" component={PointandBonus}/>
+              <Stack.Screen name="MyOrders" component={MyOrders}/>
             </>
           ) : (
             <>
