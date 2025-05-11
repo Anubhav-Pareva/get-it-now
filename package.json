@@ -39,6 +39,7 @@
     "react-native-svg": "^15.11.2",
     "react-native-vector-icons": "^10.2.0",
     "react-navigation": "^5.0.0",
-    "expo-clipboard": "~7.1.4"
+    "expo-clipboard": "~7.1.4",
+    "expo-updates": "~0.28.12"
   }
 }
