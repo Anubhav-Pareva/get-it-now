@@ -15,7 +15,7 @@ import MyOrders from "./screens/profile-screens/MyOrdersScreen";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   return (
     <Provider>
       <NavigationContainer>

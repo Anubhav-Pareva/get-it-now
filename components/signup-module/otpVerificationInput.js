@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { useRef, useState } from "react";
 
-export default function OtpVerificationInput({setActiveComp}) {
+export default function OtpVerificationInput({setActiveComp, userEmail}) {
     const [otp, setOtp] = useState(['', '', '', '']);
     const inputs = useRef([]);
     function handleButtonClick(){
@@ -29,7 +29,7 @@ export default function OtpVerificationInput({setActiveComp}) {
     return (
         <View style={styles.contentWrapper}>
             <Text style={styles.title}>Enter code from SMS</Text>
-            <Text style={styles.subTitle}>We have sent a message to phone +7 999 123 45 67</Text>
+            <Text style={styles.subTitle}>We have sent a otp mail to your email {userEmail}</Text>
             <View style={styles.inputWrapper}>
                 <View style={styles.otpRow}>
                     {otp.map((digit, index) => (

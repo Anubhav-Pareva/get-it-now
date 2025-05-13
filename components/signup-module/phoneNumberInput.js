@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { Colors } from "../../assets/constant";
 
-export default function PhoneNumberInput({setActiveComp}) {
+export default function PhoneNumberInput({setActiveComp, userEmail, setUserEmail }) {
   function handleButtonClick(){
     setActiveComp(2);
   }
@@ -12,7 +12,9 @@ export default function PhoneNumberInput({setActiveComp}) {
       <View style={styles.inputWrapper}>
         <TextInput
           mode="outlined"
-          label="Email phone number"
+          label="Enter email address"
+          value={userEmail}
+          onChangeText={(text)=>setUserEmail(text)}
           activeOutlineColor={Colors["my-green-60"]}
           outlineColor={Colors["my-green-60"]}
           style={styles.inputStyle}

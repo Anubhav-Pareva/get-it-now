@@ -11,12 +11,11 @@ import OtpVerificationInput from "../components/signup-module/otpVerificationInp
 import CreatePasswordInput from "../components/signup-module/createPasswordInput";
 import AcquaintedInput from "../components/signup-module/acquaintedInput";
 import { useState } from "react";
-import { IconButton } from "react-native-paper";
-import { Colors } from "../assets/constant";
 import BackButton from "../components/BackButton";
 
 export default function Signup() {
   const [activeComp, setActiveComp] = useState(1);
+  const [userEmail, setUserEmail] = useState("");
   const handleBackbutton = () =>{
     if (activeComp > 1) setActiveComp(activeComp - 1);
   }
@@ -39,10 +38,13 @@ export default function Signup() {
             />
           </View>
           {activeComp === 1 && (
-            <PhoneNumberInput setActiveComp={setActiveComp} />
+            <PhoneNumberInput setActiveComp={setActiveComp} 
+                              userEmail={userEmail} 
+                              setUserEmail={setUserEmail}/>
           )}
           {activeComp === 2 && (
-            <OtpVerificationInput setActiveComp={setActiveComp} />
+            <OtpVerificationInput setActiveComp={setActiveComp} 
+                                  userEmail={userEmail}/>
           )}
           {activeComp === 3 && (
             <CreatePasswordInput setActiveComp={setActiveComp} />
